@@ -82,6 +82,7 @@ PEA HiVE Developer Documentation
    literature-review/transconnext
    literature-review/thailand-smart-city
    literature-review/solar-energy-training
+   literature-review/solar-energy
 
 .. toctree::
    :hidden:
@@ -98,11 +99,18 @@ PEA HiVE Developer Documentation
    pea-hive-software-architecture/index
 
 .. toctree::
-   :hidden:
-   :caption: PEA HiVE Features
-   :maxdepth: 2
+    :hidden:
+    :caption: Layer 1:Device Connectivity
+    :maxdepth: 2
 
-   pea-hive-features/index
+    layer1/classapi-development
+
+.. toctree::
+        :hidden:
+        :caption: Layer 2:OS and Multi-Agent Systems
+        :maxdepth: 2
+
+    Layer2/os-and-multi-agent-system
 
 .. toctree::
     :hidden:
