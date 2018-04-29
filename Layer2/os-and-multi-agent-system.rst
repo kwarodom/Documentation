@@ -88,11 +88,33 @@ volttron-ctl stop <uuid>
 -------
 .. image:: ../img/layer2/agent.png
    :width: 100%
+Issue 1: if you cannot run Agent in Pycharm, run ‘volttron-ctl auth add’ -> make sure credentials []: /.*/
 
+2.5 Monitor message bus status
+------
+===========================================
+# Activate the terminal
+source envin/activate # Package the agent
+volttron-pkg package services/ops/MessageDebuggerAgent
+# Set the agent's configuration file
+volttron-pkg configure ~/.volttron/packaged/messagedebuggeragent-1.0-py2-none-any.whl /home/kwarodom/workspace/hive_os/volttron/services/ops/MessageDebuggerAgent/messagedebugger.config
+# Install the agent (volttron must be running):
+volttron-ctl install ~/.volttron/packaged/messagedebuggeragent-1.0-py2-none-any.whl
+# Start the agent:
+volttron-ctl start --name messagedebuggeragent-1.0 # Verify the agent has started
+volttron-ctl status
+# Note the uuid
+# Check that Listener is publishing heartbeat message: cat volttron.log
+# Stop the agent
+volttron-ctl stop --name messagedebuggeragent-1.0
+# -- or --
+volttron-ctl stop <uuid>
 
+.. image:: ../img/layer2/massageviwer.png
+   :width: 100%
 
-
-
+.. image:: ../img/layer2/volttron.png
+   :width: 100%
 
 
 
