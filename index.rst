@@ -73,7 +73,7 @@ PEA HiVE Developer Documentation
 .. toctree::
    :hidden:
    :caption: Literature Review
-   :maxdepth: 2
+   :maxdepth: 1
 
    literature-review/smart-home
    literature-review/standards
@@ -106,11 +106,53 @@ PEA HiVE Developer Documentation
     layer1/classapi-development
 
 .. toctree::
-        :hidden:
-        :caption: Layer 2:OS and Multi-Agent Systems
-        :maxdepth: 2
+    :hidden:
+    :caption: Layer 2:OS and Multi-Agent Systems
+    :maxdepth: 2
 
     Layer2/os-and-multi-agent-system
+
+.. toctree::
+    :hidden:
+    :caption: Layer 3:Database
+    :maxdepth: 2
+
+    layer3/database
+
+.. toctree::
+    :hidden:
+    :caption: Layer 4:Database
+    :maxdepth: 2
+
+    layer4/cloud_services
+
+.. toctree::
+    :hidden:
+    :caption: Layer 5:Application Development
+    :maxdepth: 2
+
+    layer5/application_development
+
+.. toctree::
+    :hidden:
+    :caption: Layer 6:User Interface (UI) Development
+    :maxdepth: 2
+
+    layer6/user_interface
+
+.. toctree::
+      :hidden:
+      :caption: DevOps
+      :maxdepth: 1
+
+    devops/devops
+
+.. toctree::
+      :hidden:
+      :caption: DevOps
+      :maxdepth: 1
+
+    quality_assurance/quality_assurance
 
 .. toctree::
     :hidden:
@@ -150,7 +192,7 @@ PEA HiVE Developer Documentation
 
 .. toctree::
     :hidden:
-    :maxdepth: 1
+    :maxdepth: 2
     :caption: Reference
 
     capabilities-reference
@@ -158,7 +200,7 @@ PEA HiVE Developer Documentation
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Misc
 
    contributing/index
