@@ -168,7 +168,7 @@ Layer 1: Device Connectivity
     	else:
         	print(" wrong url for getting all lights\n")
 
--รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API  ในฟังก์ชั่น getAllLights
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API  ในฟังก์ชั่น getAllLights
 
 .. code-block:: python
 
@@ -190,7 +190,7 @@ Layer 1: Device Connectivity
         	else:
             	print ('{}: \"{}\"'.format(k, _theJSON[k]))
 
--รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ PhilipsHue ในฟังก์ชั่น getLightStatus
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ PhilipsHue ในฟังก์ชั่น getLightStatus
 
 .. code-block:: python
 
@@ -201,11 +201,11 @@ Layer 1: Device Connectivity
     	print(_body)
     	opener = urllib2.build_opener(urllib2.HTTPHandler)
     	request = urllib2.Request(urlData+'/lights/'+str(ID), data=_body)
-        request.add_header('Content-Type', 'application/json')
-        request.get_method = lambda: 'PUT'
+      request.add_header('Content-Type', 'application/json')
+    request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ PhilipsHue  ในฟังก์ชั่น setLightAttribute
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ PhilipsHue  ในฟังก์ชั่น setLightAttribute
 
 .. code-block:: python
 
@@ -222,7 +222,7 @@ Layer 1: Device Connectivity
         request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ PhilipsHue  ในฟังก์ชั่น setLightStatus
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ PhilipsHue  ในฟังก์ชั่น setLightStatus
 
 .. code-block:: python
 
@@ -232,7 +232,7 @@ Layer 1: Device Connectivity
     	time.sleep(5)
         self.setLightStatus(urlData,ID,'on','true')
 
--รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ PhilipsHue ในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ PhilipsHue ในฟังก์ชั่น identifyDevice
 
 1.4.2 classAPI_WeMo
     class API อันนี้ใช้สำหรับ Belkin WeMo devicesโดยที่มันรองรับ XML request. classAPI methods โดยที่ class_API นี้สามารถรองรับเฉพาะการสั่งการคำสั่งที่เป็น ON/OFF เท่านั้น
@@ -249,12 +249,12 @@ Layer 1: Device Connectivity
          deviceModel=dom.getElementsByTagName('modelDescription')[0].firstChild.data
     	return deviceModel
 
--รูปที่ 1.4.2-1 ส่วนประกอบของ Class_API_Wemo ในฟังก์ชั่น getDeviceModel
+- รูปที่ 1.4.2-1 ส่วนประกอบของ Class_API_Wemo ในฟังก์ชั่น getDeviceModel
 
 .. code-block:: python
 
     #method2: GET device status by XML read
-	def getDeviceStatus(self):
+	   def getDeviceStatus(self):
     	header = {
         	'Content-Type': 'text/xml; charset="utf-8"',
         	'SOAPACTION': '"urn:Belkin:service:basicevent:1#GetBinaryState"'
@@ -262,46 +262,46 @@ Layer 1: Device Connectivity
     	body="<?xml version='1.0' encoding='utf-8'?><s:Envelope xmlns:s='http://schemas.xmlsoap.org/soap/envelope/' s:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'><s:Body><u:GetBinaryState xmlns:u='urn:Belkin:service:basicevent:1'></u:GetBinaryState></s:Body></s:Envelope>"
     	controlUrl=self.get_variable('address')+'/upnp/control/basicevent1'
     	response = requests.post(controlUrl, body, headers=header)
-        dom=minidom.parseString(response.content)
+      dom=minidom.parseString(response.content)
     self.set_variable('Status',int(dom.getElementsByTagName('BinaryState')[0].firstChild.data))
 
--รูปที่ 1.4.2-2 ส่วนประกอบของ Class_API_Wemo  ในฟังก์ชั่น getDeviceStatus
+- รูปที่ 1.4.2-2 ส่วนประกอบของ Class_API_Wemo  ในฟังก์ชั่น getDeviceStatus
 
 .. code-block:: python
 
     #method3: POST Change status
-	def setDeviceStatus(self, newstatus):
-    	header = {
+	   def setDeviceStatus(self, newstatus):
+     header = {
             	'Content-Type': 'text/xml; charset="utf-8"',
             	'SOAPACTION': '"urn:Belkin:service:basicevent:1#SetBinaryState"'
         	}
-    	body="<?xml version='1.0' encoding='utf-8'?><s:Envelope xmlns:s='http://schemas.xmlsoap.org/soap/envelope/' s:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'><s:Body><u:SetBinaryState xmlns:u='urn:Belkin:service:basicevent:1'><BinaryState>"+str(int(newstatus))+"</BinaryState></u:SetBinaryState></s:Body></s:Envelope>"
-    	controlUrl=self.get_variable('address')+'/upnp/control/basicevent1'
-    	response = requests.post(controlUrl, body, headers=header)
-    	dom=minidom.parseString(response.content)
-    	responsestatus=dom.getElementsByTagName('BinaryState')[0].firstChild.data
-    	if responsestatus!='Error':
+     body="<?xml version='1.0' encoding='utf-8'?><s:Envelope xmlns:s='http://schemas.xmlsoap.org/soap/envelope/' s:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'><s:Body><u:SetBinaryState xmlns:u='urn:Belkin:service:basicevent:1'><BinaryState>"+str(int(newstatus))+"</BinaryState></u:SetBinaryState></s:Body></s:Envelope>"
+     controlUrl=self.get_variable('address')+'/upnp/control/basicevent1'
+     response = requests.post(controlUrl, body, headers=header)
+     dom=minidom.parseString(response.content)
+     responsestatus=dom.getElementsByTagName('BinaryState')[0].firstChild.data
+     if responsestatus!='Error':
         self.set_variable('Status',int(responsestatus))
 
--รูปที่ 1.4.2-3 ส่วนประกอบของ Class_API_Wemo  ในฟังก์ชั่น setDeviceStatus
+- รูปที่ 1.4.2-3 ส่วนประกอบของ Class_API_Wemo  ในฟังก์ชั่น setDeviceStatus
 
 .. code-block:: python
 
     #method4: Identify Device by Toggling device status twice
-	def identifyDevice(self):
+	   def identifyDevice(self):
     	self.toggleDeviceStatus()
     	self.toggleDeviceStatus()
 
--รูปที่ 1.4.2-4 ส่วนประกอบของ Class_API_Wemo  ในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.2-4 ส่วนประกอบของ Class_API_Wemo  ในฟังก์ชั่น identifyDevice
 
 .. code-block:: python
 
     #method5: GET current status and POST toggled status
-	def toggleDeviceStatus(self):
+	   def toggleDeviceStatus(self):
     	self.getDeviceStatus()
     	self.setDeviceStatus(not self.get_variable('Status'))
 
--รูปที่ 1.4.2-5 ส่วนประกอบของ Class_API_Wemo  ในฟังก์ชั่น toggleDeviceStatus
+- รูปที่ 1.4.2-5 ส่วนประกอบของ Class_API_Wemo  ในฟังก์ชั่น toggleDeviceStatus
 
 1.4.3 classAPI_ACSaijo
 class API อันนี้ใช้สำหรับ ACSaijoโดยที่มันรองรับ HTTP GET and POST requests. classAPI methods ได้ถูกออกแบบให้ใช้กับ http URL ของ Hue device ตัวอื่นๆอีกด้วยที่มีการส่งด้วย GET/POST data ที่เป็นฟอร์แมทของ JSON
@@ -309,7 +309,7 @@ class API อันนี้ใช้สำหรับ ACSaijoโดยที�
 .. code-block:: python
 
     #method1: Lights discovery
-	def getAllLights(self,urlData):
+	   def getAllLights(self,urlData):
     	getAllLightsUrl = urllib2.Request(urlData+'/lights') #without data argument this is a GET command
     	print(" {0}Agent is performing lights discovery, please wait ...".format(self.variables.get('type',None)))
     	getAllLights = urllib2.urlopen(getAllLightsUrl)
@@ -321,12 +321,12 @@ class API อันนี้ใช้สำหรับ ACSaijoโดยที�
     	else:
         print(" wrong url for getting all lights\n")
 
--รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
 
 .. code-block:: python
 
     #method2: get light status
-	def getLightStatus(self,urlData,ID):
+	   def getLightStatus(self,urlData,ID):
     	getLightStatusUrl = urllib2.Request(urlData+'/lights/'+str(ID)) #without data argument this is a GET command
     	print(" {0}Agent is querying attributes and state for light {1}, please wait ...".format(self.variables.get('type',None),ID))
     	getLightStatus = urllib2.urlopen(getLightStatusUrl)
@@ -342,50 +342,50 @@ class API อันนี้ใช้สำหรับ ACSaijoโดยที�
                 	print (' {}: \"{}\"'.format(kk, _theJSON[k][kk]))
         	else:
     print ('{}: \"{}\"'.format(k, _theJSON[k]))
-
--รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
+``
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
 
 .. code-block:: python
 
     #method3: rename lights
-	def setLightAttribute(self,urlData,ID,ATTRIBUTE,NEWNAME):
-    #   _body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
-    	_body = '{\"'+ATTRIBUTE+'\":\"'+NEWNAME+'\"}' #{"name":"Bedroom Light"}
-    	print(_body)
-    	opener = urllib2.build_opener(urllib2.HTTPHandler)
-    	request = urllib2.Request(urlData+'/lights/'+str(ID), data=_body)
-        request.add_header('Content-Type', 'application/json')
-        request.get_method = lambda: 'PUT'
-    	url = opener.open(request
+	   def setLightAttribute(self,urlData,ID,ATTRIBUTE,NEWNAME):
+    #    _body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
+    	   _body = '{\"'+ATTRIBUTE+'\":\"'+NEWNAME+'\"}' #{"name":"Bedroom Light"}
+    	    print(_body)
+    	    opener = urllib2.build_opener(urllib2.HTTPHandler)
+    	    request = urllib2.Request(urlData+'/lights/'+str(ID), data=_body)
+          request.add_header('Content-Type', 'application/json')
+          request.get_method = lambda: 'PUT'
+    	    url = opener.open(request
 
--รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
 
 .. code-block:: python
 
     #method4: set light states
-	def setLightStatus(self,urlData,ID,STATE,NEWVALUE):
-    	if (STATE == 'alert') | (STATE == 'effect'):
+	   def setLightStatus(self,urlData,ID,STATE,NEWVALUE):
+    	 if (STATE == 'alert') | (STATE == 'effect'):
         	_body = '{\"'+STATE+'\":\"'+NEWVALUE+'\"}' #{"name":"Bedroom Light"}
-    	else:
+       else:
         	_body = '{\"'+STATE+'\":'+str(NEWVALUE)+'}' #{"name":"Bedroom Light"}
-  	  print(_body)
-    	opener = urllib2.build_opener(urllib2.HTTPHandler)
-    	request = urllib2.Request(urlData+'/lights/'+str(ID)+'/state', data=_body)
-        request.add_header('Content-Type', 'application/json')
-        request.get_method = lambda: 'PUT'
-    	url = opener.open(request)
+  	   print(_body)
+    	 opener = urllib2.build_opener(urllib2.HTTPHandler)
+    	 request = urllib2.Request(urlData+'/lights/'+str(ID)+'/state', data=_body)
+       request.add_header('Content-Type', 'application/json')
+       request.get_method = lambda: 'PUT'
+    	 url = opener.open(request)
 
--รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
 
 .. code-block:: python
 
     #method5: Identify this lights (Physically)
     def identifyLight(self,urlData,ID):
         self.setLightStatus(urlData,ID,'on','false')
-    	time.sleep(5)
+    	  time.sleep(5)
         self.setLightStatus(urlData,ID,'on','true')
 
--รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
 
 1.4.9 classAPI_ObivoSW
 class API อันนี้ใช้สำหรับ Zigbee สวิตซ์ยี่ห้อ Obivo โดยที่มันรองรับ HTTP GET and POST requests. classAPI methods ได้ถูกออกแบบให้ใช้กับ http URL ของ Hue device ตัวอื่นๆอีกด้วยที่มีการส่งด้วย GET/POST data ที่เป็นฟอร์แมทของ JSON
@@ -405,7 +405,7 @@ class API อันนี้ใช้สำหรับ Zigbee สวิตซ�
     	else:
         	print(" wrong url for getting all lights\n")
 
--รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
 
 .. code-block:: python
 
@@ -423,11 +423,11 @@ class API อันนี้ใช้สำหรับ Zigbee สวิตซ�
         	if k == 'state':
             	print ('state:')
             	for kk in _theJSON[k].keys():
-                	print (' {}: \"{}\"'.format(kk, _theJSON[k][kk]))
+              print (' {}: \"{}\"'.format(kk, _theJSON[k][kk]))
         	else:
             	print ('{}: \"{}\"'.format(k, _theJSON[k]))
 
--รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
 
 .. code-block:: python
 
@@ -442,7 +442,7 @@ class API อันนี้ใช้สำหรับ Zigbee สวิตซ�
         request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
 
 .. code-block:: python
 
@@ -459,7 +459,7 @@ class API อันนี้ใช้สำหรับ Zigbee สวิตซ�
         request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
 
 .. code-block:: python
 
@@ -469,7 +469,7 @@ class API อันนี้ใช้สำหรับ Zigbee สวิตซ�
     	time.sleep(5)
         self.setLightStatus(urlData,ID,'on','true')
 
--รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
 
 1.4.10 classAPI_Netatmo_weather
 class API อันนี้ใช้สำหรับ Weather Station ยี่ห้อ Netatmo โดยที่มันรองรับ HTTP GET and POST requests. classAPI methods ได้ถูกออกแบบให้ใช้กับ http URL ของ Hue device ตัวอื่นๆอีกด้วยที่มีการส่งด้วย GET/POST data ที่เป็นฟอร์แมทของ JSON
@@ -489,7 +489,7 @@ class API อันนี้ใช้สำหรับ Weather Station ยี�
     	else:
         	print(" wrong url for getting all lights\n")
 
--รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
 
 .. code-block:: python
 
@@ -511,22 +511,22 @@ class API อันนี้ใช้สำหรับ Weather Station ยี�
         	else:
             	print ('{}: \"{}\"'.format(k, _theJSON[k]))
 
--รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
 
 .. code-block:: python
 
     #method3: rename lights
 	def setLightAttribute(self,urlData,ID,ATTRIBUTE,NEWNAME):
-#     	_body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
-    	_body = '{\"'+ATTRIBUTE+'\":\"'+NEWNAME+'\"}' #{"name":"Bedroom Light"}
-    	print(_body)
-    	opener = urllib2.build_opener(urllib2.HTTPHandler)
-    	request = urllib2.Request(urlData+'/lights/'+str(ID), data=_body)
-        request.add_header('Content-Type', 'application/json')
-        request.get_method = lambda: 'PUT'
-    	url = opener.open(request)
+#      _body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
+    	 _body = '{\"'+ATTRIBUTE+'\":\"'+NEWNAME+'\"}' #{"name":"Bedroom Light"}
+    	 print(_body)
+    	 opener = urllib2.build_opener(urllib2.HTTPHandler)
+    	 request = urllib2.Request(urlData+'/lights/'+str(ID), data=_body)
+       request.add_header('Content-Type', 'application/json')
+       request.get_method = lambda: 'PUT'
+    	 url = opener.open(request)
 
--รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
 
 .. code-block:: python
 
@@ -539,11 +539,11 @@ class API อันนี้ใช้สำหรับ Weather Station ยี�
   	  print(_body)
     	opener = urllib2.build_opener(urllib2.HTTPHandler)
     	request = urllib2.Request(urlData+'/lights/'+str(ID)+'/state', data=_body)
-        request.add_header('Content-Type', 'application/json')
-        request.get_method = lambda: 'PUT'
+      request.add_header('Content-Type', 'application/json')
+      request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
 
 .. code-block:: python
 
@@ -553,7 +553,7 @@ class API อันนี้ใช้สำหรับ Weather Station ยี�
     	time.sleep(5)
         self.setLightStatus(urlData,ID,'on','true')
 
--รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
 
 1.4.11 classAPI_Powermeter_etrix
 class API อันนี้ใช้สำหรับมิเตอร์ยี่ห้อ Etrix alam โดยที่มันรองรับ HTTP GET and POST requests. classAPI methods ได้ถูกออกแบบให้ใช้กับ http URL ของ Hue device ตัวอื่นๆอีกด้วยที่มีการส่งด้วย GET/POST data ที่เป็นฟอร์แมทของ JSON
@@ -561,19 +561,19 @@ class API อันนี้ใช้สำหรับมิเตอร์ย�
 .. code-block:: python
 
     #method1: Lights discovery
-	def getAllLights(self,urlData):
-    	getAllLightsUrl = urllib2.Request(urlData+'/lights') #without data argument this is a GET command
-    	print(" {0}Agent is performing lights discovery, please wait ...".format(self.variables.get('type',None)))
-    	getAllLights = urllib2.urlopen(getAllLightsUrl)
-        _theJSON=json.loads(getAllLights.read().decode("utf-8"))
-    	for k in _theJSON.keys():
-        	print ('light {} is called \"{}\"'.format(k, _theJSON[k]["name"]))
-    	if (getAllLights.getcode()==200):
-        	print(" {} lights have been discovered\n".format(len(_theJSON.keys())))
-        else:
-        	print(" wrong url for getting all lights\n")
+	   def getAllLights(self,urlData):
+    	   getAllLightsUrl = urllib2.Request(urlData+'/lights') #without data argument this is a GET command
+    	   print(" {0}Agent is performing lights discovery, please wait ...".format(self.variables.get('type',None)))
+    	   getAllLights = urllib2.urlopen(getAllLightsUrl)
+         _theJSON=json.loads(getAllLights.read().decode("utf-8"))
+    	   for k in _theJSON.keys():
+        	   print ('light {} is called \"{}\"'.format(k, _theJSON[k]["name"]))
+    	   if (getAllLights.getcode()==200):
+        	   print(" {} lights have been discovered\n".format(len(_theJSON.keys())))
+         else:
+        	   print(" wrong url for getting all lights\n")
 
--รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
 
 .. code-block:: python
 
@@ -595,27 +595,27 @@ class API อันนี้ใช้สำหรับมิเตอร์ย�
         	else:
             	print ('{}: \"{}\"'.format(k, _theJSON[k]))
 
--รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
 
 .. code-block:: python
 
     #method3: rename lights
-	def setLightAttribute(self,urlData,ID,ATTRIBUTE,NEWNAME):
+	   def setLightAttribute(self,urlData,ID,ATTRIBUTE,NEWNAME):
     #    	_body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
     	    _body = '{\"'+ATTRIBUTE+'\":\"'+NEWNAME+'\"}' #{"name":"Bedroom Light"}
     	    print(_body)
     	    opener = urllib2.build_opener(urllib2.HTTPHandler)
     	    request = urllib2.Request(urlData+'/lights/'+str(ID), data=_body)
-            request.add_header('Content-Type', 'application/json')
-            request.get_method = lambda: 'PUT'
+          request.add_header('Content-Type', 'application/json')
+          request.get_method = lambda: 'PUT'
     	    url = opener.open(request)
 
--รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
 
 .. code-block:: python
 
     #method4: set light states
-	def setLightStatus(self,urlData,ID,STATE,NEWVALUE):
+	   def setLightStatus(self,urlData,ID,STATE,NEWVALUE):
     	if (STATE == 'alert') | (STATE == 'effect'):
         	_body = '{\"'+STATE+'\":\"'+NEWVALUE+'\"}' #{"name":"Bedroom Light"}
     	else:
@@ -623,21 +623,21 @@ class API อันนี้ใช้สำหรับมิเตอร์ย�
   	  print(_body)
     	opener = urllib2.build_opener(urllib2.HTTPHandler)
     	request = urllib2.Request(urlData+'/lights/'+str(ID)+'/state', data=_body)
-        request.add_header('Content-Type', 'application/json')
-        request.get_method = lambda: 'PUT'
+      request.add_header('Content-Type', 'application/json')
+      request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
 
 .. code-block:: python
 
     #method5: Identify this lights (Physically)
-    def identifyLight(self,urlData,ID):
+     def identifyLight(self,urlData,ID):
         self.setLightStatus(urlData,ID,'on','false')
     	time.sleep(5)
         self.setLightStatus(urlData,ID,'on','true')
 
--รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
 
 1.4.12 classAPI__Powermeter_smappee
 class API อันนี้ใช้สำหรับมิเตอร์ยี่ห้อ Smappee โดยที่มันรองรับ HTTP GET and POST requests. classAPI methods ได้ถูกออกแบบให้ใช้กับ http URL ของ Hue device ตัวอื่นๆอีกด้วยที่มีการส่งด้วย GET/POST data ที่เป็นฟอร์แมทของ JSON
@@ -657,7 +657,7 @@ class API อันนี้ใช้สำหรับมิเตอร์ย�
     	else:
         	print(" wrong url for getting all lights\n")
 
--รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
 
 .. code-block:: python
 
@@ -676,25 +676,25 @@ class API อันนี้ใช้สำหรับมิเตอร์ย�
             	print ('state:')
             	for kk in _theJSON[k].keys():
                 	print (' {}: \"{}\"'.format(kk, _theJSON[k][kk]))
-        else:
+      else:
             	print ('{}: \"{}\"'.format(k, _theJSON[k]))
 
--รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
 
 .. code-block:: python
 
     #method3: rename lights
 	def setLightAttribute(self,urlData,ID,ATTRIBUTE,NEWNAME):
-    #   _body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
-    	_body = '{\"'+ATTRIBUTE+'\":\"'+NEWNAME+'\"}' #{"name":"Bedroom Light"}
-    	print(_body)
-    	opener = urllib2.build_opener(urllib2.HTTPHandler)
-    	request = urllib2.Request(urlData+'/lights/'+str(ID), data=_body)
+#       _body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
+    	  _body = '{\"'+ATTRIBUTE+'\":\"'+NEWNAME+'\"}' #{"name":"Bedroom Light"}
+    	  print(_body)
+    	  opener = urllib2.build_opener(urllib2.HTTPHandler)
+    	  request = urllib2.Request(urlData+'/lights/'+str(ID), data=_body)
         request.add_header('Content-Type', 'application/json')
         request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
 
 .. code-block:: python
 
@@ -707,21 +707,21 @@ class API อันนี้ใช้สำหรับมิเตอร์ย�
   	  print(_body)
     	opener = urllib2.build_opener(urllib2.HTTPHandler)
     	request = urllib2.Request(urlData+'/lights/'+str(ID)+'/state', data=_body)
-        request.add_header('Content-Type', 'application/json')
-        request.get_method = lambda: 'PUT'
+      request.add_header('Content-Type', 'application/json')
+      request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
 
 .. code-block:: python
 
     #method5: Identify this lights (Physically)
     def identifyLight(self,urlData,ID):
         self.setLightStatus(urlData,ID,'on','false')
-    	time.sleep(5)
+    	  time.sleep(5)
         self.setLightStatus(urlData,ID,'on','true')
 
--รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
 
 1.4.13 classAPI_Somfy
 class API อันนี้ใช้สำหรับม่านยี่ห้อ Somfy โดยที่มันรองรับ HTTP GET and POST requests. classAPI methods ได้ถูกออกแบบให้ใช้กับ http URL ของ Hue device ตัวอื่นๆอีกด้วยที่มีการส่งด้วย GET/POST data ที่เป็นฟอร์แมทของ JSON
@@ -741,7 +741,7 @@ class API อันนี้ใช้สำหรับม่านยี่ห�
     	else:
         print(" wrong url for getting all lights\n")
 
--รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
 
 .. code-block:: python
 
@@ -783,22 +783,22 @@ class API อันนี้ใช้สำหรับม่านยี่ห�
         	else:
                 print ('{}: \"{}\"'.format(k, _theJSON[k]))
 
--รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
 
 .. code-block:: python
 
     #method3: rename lights
 	def setLightAttribute(self,urlData,ID,ATTRIBUTE,NEWNAME):
-     #  _body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
+#     _body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
     	_body = '{\"'+ATTRIBUTE+'\":\"'+NEWNAME+'\"}' #{"name":"Bedroom Light"}
     	print(_body)
     	opener = urllib2.build_opener(urllib2.HTTPHandler)
     	request = urllib2.Request(urlData+'/lights/'+str(ID), data=_body)
-        request.add_header('Content-Type', 'application/json')
-        request.get_method = lambda: 'PUT'
+      request.add_header('Content-Type', 'application/json')
+      request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
 
 .. code-block:: python
 
@@ -811,11 +811,11 @@ class API อันนี้ใช้สำหรับม่านยี่ห�
   	  print(_body)
     	opener = urllib2.build_opener(urllib2.HTTPHandler)
     	request = urllib2.Request(urlData+'/lights/'+str(ID)+'/state', data=_body)
-        request.add_header('Content-Type', 'application/json')
-        request.get_method = lambda: 'PUT'
+      request.add_header('Content-Type', 'application/json')
+      request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
 
 .. code-block:: python
 
@@ -825,7 +825,7 @@ class API อันนี้ใช้สำหรับม่านยี่ห�
     	time.sleep(5)
         self.setLightStatus(urlData,ID,'on','true')
 
--รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
 
 1.4.14 classAPI_Sonos
 class API อันนี้ใช้สำหรับลำโพงยี่ห้อ Sonos โดยที่มันรองรับ HTTP GET and POST requests. classAPI methods ได้ถูกออกแบบให้ใช้กับ http URL ของ Hue device ตัวอื่นๆอีกด้วยที่มีการส่งด้วย GET/POST data ที่เป็นฟอร์แมทของ JSON
@@ -845,7 +845,7 @@ class API อันนี้ใช้สำหรับลำโพงยี่�
     	else:
         	print(" wrong url for getting all lights\n")
 
--รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
 
 .. code-block:: python
 
@@ -867,14 +867,14 @@ class API อันนี้ใช้สำหรับลำโพงยี่�
         	else:
             	print ('{}: \"{}\"'.format(k, _theJSON[k]))
 
--รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
 
 .. code-block:: python
 
     #method3: rename lights
 	def setLightAttribute(self,urlData,ID,ATTRIBUTE,NEWNAME):
-    #   _body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
-        _body = '{\"'+ATTRIBUTE+'\":\"'+NEWNAME+'\"}' #{"name":"Bedroom Light"}
+    # _body = '{\"{}\": "{}\"}'.format(ATTRIBUTE,NEWNAME) #don't use format here
+      _body = '{\"'+ATTRIBUTE+'\":\"'+NEWNAME+'\"}' #{"name":"Bedroom Light"}
     	print(_body)
     	opener = urllib2.build_opener(urllib2.HTTPHandler)
     	request = urllib2.Request(urlData+'/lights/'+str(ID), data=_body)
@@ -882,7 +882,7 @@ class API อันนี้ใช้สำหรับลำโพงยี่�
         request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatus
 
 .. code-block:: python
 
@@ -895,11 +895,11 @@ class API อันนี้ใช้สำหรับลำโพงยี่�
   	  print(_body)
     	opener = urllib2.build_opener(urllib2.HTTPHandler)
     	request = urllib2.Request(urlData+'/lights/'+str(ID)+'/state', data=_body)
-        request.add_header('Content-Type', 'application/json')
-        request.get_method = lambda: 'PUT'
+      request.add_header('Content-Type', 'application/json')
+      request.get_method = lambda: 'PUT'
     	url = opener.open(request)
 
--รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_API_ ACSaijo  ในฟังก์ชั่น setDeviceStatust
 
 .. code-block:: python
 
@@ -909,7 +909,7 @@ class API อันนี้ใช้สำหรับลำโพงยี่�
     	time.sleep(5)
         self.setLightStatus(urlData,ID,'on','true')
 
--รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
 
 1.4.15 classAPI_ST_OpenClose
 class API อันนี้ใช้สำหรับเซ็นเซอร์ประตู(Open close)โดยที่มันรองรับ HTTP GET and POST requests. classAPI methods ได้ถูกออกแบบให้ใช้กับ http URL ของ Hue device ตัวอื่นๆอีกด้วยที่มีการส่งด้วย GET/POST data ที่เป็นฟอร์แมทของ JSON
@@ -929,7 +929,7 @@ class API อันนี้ใช้สำหรับเซ็นเซอร�
     	else:
         	print(" wrong url for getting all lights\n")
 
--รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_ACSaijo  ในฟังก์ชั่น getDeviceModel
 
 .. code-block:: python
 
@@ -951,7 +951,7 @@ class API อันนี้ใช้สำหรับเซ็นเซอร�
         	else:
             	print ('{}: \"{}\"'.format(k, _theJSON[k]))
 
--รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_ ACSaijo ในฟังก์ชั่น getDeviceStatus
 
 .. code-block:: python
 
@@ -993,42 +993,578 @@ class API อันนี้ใช้สำหรับเซ็นเซอร�
     	time.sleep(5)
         self.setLightStatus(urlData,ID,'on','true')
 
--รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_API_ ACSaijoในฟังก์ชั่น identifyDevice
+
+1.4.16 classAPI_Smartthings_Fibaro
+----------------------------------
+
+.. code-block:: python
+
+    def getDeviceStatus(self):
+        try:
+            headers = {"Authorization": self.get_variable("bearer")}
+            url = str(self.get_variable("url") + self.get_variable("device"))
+            r = requests.get(url,
+                             headers=headers, timeout=20);
+
+            print(" {0}Agent is querying its current status (status:{1}) please wait ...")
+            format(self.variables.get('agent_id', None), str(r.status_code))
+            if r.status_code == 200:
+                getDeviceStatusResult = False
+                self.getDeviceStatusJson(r.text)
+                if self.debug is True:
+                    self.printDeviceStatus()
+            else:
+                print (" Received an error from server, cannot retrieve results")
+                getDeviceStatusResult = False
+            # Check the connectivity
+            if getDeviceStatusResult==True:
+                self.set_variable('offline_count', 0)
+            else:
+                self.set_variable('offline_count', self.get_variable('offline_count')+1)
+        except Exception as er:
+            print er
+            print('ERROR: classAPI_Fibaro failed to getDeviceStatus')
+
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_API_Fibaro  ในฟังก์ชั่น getDeviceStatus
+
+.. code-block:: python
+
+    def getDeviceStatusJson(self, data):
+       conve_json = json.loads(data)
+       self.set_variable('label', str(conve_json["label"]))
+       self.set_variable('illuminance', str(conve_json["illuminance"]))
+       self.set_variable('temperature', str(conve_json["temperature"]))
+       self.set_variable('battery', str(conve_json["battery"]))
+       self.set_variable('motion', str(conve_json["motion"]))
+       self.set_variable('tamper', str(conve_json["tamper"]))
+       self.set_variable('humidity', float(0.0))
+       self.set_variable('unitTime', conve_json["unitTime"])
+       self.set_variable('type', str(conve_json["type"]))
+
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_API_Fibaro  ในฟังก์ชั่น getDeviceStatusJson
+
+.. code-block:: python
+
+    def printDeviceStatus(self):
+        # now we can access the contents of the JSON like any other Python object
+        print(" the current status is as follows:")
+        print(" label = {}".format(self.get_variable('label')))
+        print(" illuminance = {}".format(self.get_variable('illuminance')))
+        print(" temperature = {}".format(self.get_variable('temperature')))
+        print(" battery = {}".format(self.get_variable('battery')))
+        print(" motion = {}".format(self.get_variable('motion')))
+        print(" tamper = {}".format(self.get_variable('tamper')))
+        print(" humidity = {}".format(self.get_variable('humidity')))
+        print(" unitTime = {}".format(self.get_variable('unitTime')))
+        print(" type= {}".format(self.get_variable('type')))
+        print("---------------------------------------------")
+
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_API_Fibaro  ในฟังก์ชั่น printDeviceStatus
+
+1.4.17 classAPI_Smartthings_Inwall
+----------------------------------
+.. code-block:: python
+
+    def getDeviceStatus(self):
+        getDeviceStatusResult = True
+        headers = {"Authorization": self.get_variable("bearer")}
+        url = str(self.get_variable("url")+self.get_variable("device"))
+        try:
+            r = requests.get(url,
+                             headers=headers, timeout=20);
+            print("{0} Agent is querying its current status (status:{1}) please wait ...".format(self.get_variable('agent_id'), r.status_code))
+            format(self.variables.get('agent_id', None), str(r.status_code))
+            print r.text
+            if r.status_code == 200:
+                getDeviceStatusResult = False
+                self.getDeviceStatusJson(r.text)
+                if self.debug is True:
+                    self.printDeviceStatus()
+            else:
+                print (" Received an error from server, cannot retrieve results")
+                getDeviceStatusResult = False
+
+            if getDeviceStatusResult==True:
+                self.set_variable('offline_count', 0)
+            else:
+                self.set_variable('offline_count', self.get_variable('offline_count')+1)
+        except Exception as er:
+            print er
+            print('ERROR: classAPI_PhilipsHue failed to getDeviceStatus')
+            self.set_variable('offline_count',self.get_variable('offline_count')+1)
+
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_Smartthings_Inwall  ในฟังก์ชั่น getDeviceStatus
+
+.. code-block:: python
+
+      def getDeviceStatusJson(self, data):
+        conve_json = json.loads(data)
+        self.set_variable('label', str(conve_json["label"]))
+        self.set_variable('status', str(conve_json["status"]).upper())
+        self.set_variable('unitTime', conve_json["unitTime"])
+        self.set_variable('type', str(conve_json["type"]))
+
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_Smartthings_Inwall  ในฟังก์ชั่น getDeviceStatusJson
+
+.. code-block:: python
+
+    def printDeviceStatus(self):
+        # now we can access the contents of the JSON like any other Python object
+        print(" the current status is as follows:")
+        print(" label = {}".format(self.get_variable('label')))
+        print(" status = {}".format(self.get_variable('status')))
+        print(" unitTime = {}".format(self.get_variable('unitTime')))
+        print(" type= {}".format(self.get_variable('type')))
+        print("---------------------------------------------")
+
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_Smartthings_Inwall  ในฟังก์ชั่น printDeviceStatus
+
+.. code-block:: python
+
+    def setDeviceStatus(self, postmsg):
+        setDeviceStatusResult = True
+        headers = {"Authorization": self.get_variable("bearer")}
+        url = str(self.get_variable("url")+self.get_variable("device"))
+        if self.isPostMsgValid(postmsg) == True:  # check if the data is valid
+            _data = json.dumps(self.convertPostMsg(postmsg))
+            _data = _data.encode(encoding='utf_8')
+            print _data
+            try:
+                print "sending requests put"
+                r = requests.put(
+                    url,
+                    headers=headers, data= _data, timeout=20);
+                # print "15456"
+                # print r.text
+                print(" {0}Agent for {1} is changing its status with {2} please wait ..."
+                      .format(self.variables.get('agent_id', None), self.variables.get('model', None), postmsg))
+                print(" after send a POST request: {}".format(r.status_code))
+            except:
+                print("ERROR: classAPI_RelaySW connection failure! @ setDeviceStatus")
+                setDeviceStatusResult = False
+        else:
+            print("The POST message is invalid, try again\n")
+        return setDeviceStatusResult
+
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_Smartthings_Inwall  ในฟังก์ชั่น setDeviceStatus
+
+.. code-block:: python
+
+    def isPostMsgValid(self, postmsg):  # check validity of postmsg
+       dataValidity = True
+       # TODO algo to check whether postmsg is valid
+       return dataValidity
+
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_Smartthings_Inwall  ในฟังก์ชั่น isPostMsgValid
+
+.. code-block:: python
+
+    def convertPostMsg(self, postmsg):
+        msgToDevice = {}
+        if 'status' in postmsg.keys():
+            msgToDevice['command'] = self.get_variable('model').capitalize() + str(postmsg['status'].lower().capitalize())
+        return msgToDevice
+
+- รูปที่ 1.4.1-6 ส่วนประกอบของ Class_Smartthings_Inwall  ในฟังก์ชั่น convertPostMsg
+
+1.4.18 classAPI_Smartthings_Wemo
+---------------------------------
+
+.. code-block:: python
+
+  def getDeviceStatus(self):
+       getDeviceStatusResult = True
+       headers = {"Authorization": self.get_variable("bearer")}
+       url = str(self.get_variable("url")+self.get_variable("device"))
+       print(url)
+       try:
+           r = requests.get(url,
+                            headers=headers, timeout=20);
+           print("{0} Agent is querying its current status (status:{1}) please wait ...".format(self.get_variable('agent_id'), r.status_code))
+           format(self.variables.get('agent_id', None), str(r.status_code))
+           print r.text
+           if r.status_code == 200:
+               getDeviceStatusResult = False
+               self.getDeviceStatusJson(r.text)
+               if self.debug is True:
+                   self.printDeviceStatus()
+           else:
+               print (" Received an error from server, cannot retrieve results")
+               getDeviceStatusResult = False
+
+           if getDeviceStatusResult==True:
+               self.set_variable('offline_count', 0)
+           else:
+               self.set_variable('offline_count', self.get_variable('offline_count')+1)
+       except Exception as er:
+           print er
+           print('ERROR: classAPI_PhilipsHue failed to getDeviceStatus')
+           self.set_variable('offline_count',self.get_variable('offline_count')+1)
+
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_Smartthings_Wemo ในฟังก์ชั่น getDeviceStatus
+
+.. code-block:: python
+
+    def getDeviceStatusJson(self, data):
+      conve_json = json.loads(data)
+      self.set_variable('label', str(conve_json["label"]))
+      self.set_variable('status', str(conve_json["status"]).upper())
+      self.set_variable('power', str(conve_json["power"]))
+      self.set_variable('unitTime', conve_json["unitTime"])
+      self.set_variable('type', str(conve_json["type"]))
+
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_Smartthings_Wemo ในฟังก์ชั่น getDeviceStatusJson
+
+.. code-block:: python
+
+def printDeviceStatus(self):
+        print(" the current status is as follows:")
+        print(" label = {}".format(self.get_variable('label')))
+        print(" status = {}".format(self.get_variable('status')))
+        print(" power = {}".format(self.get_variable('power')))
+        print(" unitTime = {}".format(self.get_variable('unitTime')))
+        print(" type= {}".format(self.get_variable('type')))
+        print("---------------------------------------------")
+
+))
+
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_Smartthings_Wemo ในฟังก์ชั่น printDeviceStatus
+
+.. code-block:: python
+
+  def setDeviceStatus(self, postmsg):
+        setDeviceStatusResult = True
+        headers = {"Authorization": self.get_variable("bearer")}
+        url = str(self.get_variable("url")+self.get_variable("device"))
+        if self.isPostMsgValid(postmsg) == True:
+            _data = json.dumps(self.convertPostMsg(postmsg))
+            _data = _data.encode(encoding='utf_8')
+            print _data
+            try:
+                print "sending requests put"
+                r = requests.put(
+                    url,
+                    headers=headers, data= _data, timeout=20);
+
+                print(" {0}Agent for {1} is changing its status with {2} please wait ..."
+                      .format(self.variables.get('agent_id', None), self.variables.get('model', None), postmsg))
+                print(" after send a POST request: {}".format(r.status_code))
+            except:
+                print("ERROR: classAPI_RelaySW connection failure! @ setDeviceStatus")
+                setDeviceStatusResult = False
+        else:
+            print("The POST message is invalid, try again\n")
+        return setDeviceStatusResult
+
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_Smartthings_Wemo ในฟังก์ชั่น setDeviceStatus
+
+.. code-block:: python
+
+    def isPostMsgValid(self, postmsg):
+        dataValidity = True
+        # TODO algo to check whether postmsg is valid
+        return dataValidity
+
+- รูปที่ 1.4.1-5 ส่วนประกอบของ Class_Smartthings_Wemo ในฟังก์ชั่น isPostMsgValid
+
+.. code-block:: python
+
+    def convertPostMsg(self, postmsg):
+        msgToDevice = {}
+        if 'status' in postmsg.keys():
+            msgToDevice['command'] = str(postmsg['status'].lower())
+        return msgToDevice
+
+- รูปที่ 1.4.1-6 ส่วนประกอบของ Class_Smartthings_Wemo ในฟังก์ชั่น convertPostMsg
+
+1.4.19 classAPI_Smartthings_Door
+--------------------------------
+
+.. code-block:: python
+
+  def getDeviceStatus(self):
+        try:
+            headers = {"Authorization": self.get_variable("bearer")}
+            url = str(self.get_variable("url") + self.get_variable("device"))
+            r = requests.get(url,
+                             headers=headers, timeout=20);
+            print(" {0}Agent is querying its current status (status:{1}) please wait ...")
+            format(self.variables.get('agent_id', None), str(r.status_code))
+            if r.status_code == 200:
+                getDeviceStatusResult = False
+                self.getDeviceStatusJson(r.text)
+                if self.debug is True:
+                    self.printDeviceStatus()
+            else:
+                print (" Received an error from server, cannot retrieve results")
+                getDeviceStatusResult = False
+
+            if getDeviceStatusResult==True:
+                self.set_variable('offline_count', 0)
+            else:
+                self.set_variable('offline_count', self.get_variable('offline_count')+1)
+        except Exception as er:
+            print er
+            print('ERROR: classAPI_OpenClose failed to getDeviceStatus')
+
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_Smartthings_Door ในฟังก์ชั่น getDeviceStatus
+
+.. code-block:: python
+
+    def getDeviceStatusJson(self, data):
+        conve_json = json.loads(data)
+        self.set_variable('contact', str(conve_json["contact"]))
+        self.set_variable('type', str(conve_json["type"]))
+        self.set_variable('unitTime', str(conve_json["unitTime"]))
+        self.set_variable('label', str(conve_json["label"]))
+        if self.get_variable('contact') == 'closed':
+            print "close"
+        elif self.get_variable('contact') == 'open':
+            print "open"
+
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_Smartthings_Door ในฟังก์ชั่น getDeviceStatusJson
+
+.. code-block:: python
+
+    def printDeviceStatus(self):
+       print(" the current status is as follows:")
+       print(" contact = {}".format(self.get_variable('contact')))
+       print(" unitTime = {}".format(self.get_variable('unitTime')))
+       print(" type= {}".format(self.get_variable('type')))
+       print(" label= {}".format(self.get_variable('label')))
+       print("---------------------------------------------")
+
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_Smartthings_Door ในฟังก์ชั่น printDeviceStatus
 
 
 
+1.4.20 classAPI_Smartthings_motion
 
+.. code-block:: python
 
+  def getDeviceStatus(self):
+    headers = {"Authorization": self.get_variable("bearer")}
+    url = str(self.get_variable("url") + self.get_variable("device"))
+    r = requests.get(url,
+                     headers=headers, timeout=20);
+    print r.text
+    print(" {0}Agent is querying its current status (status:{1}) please wait ...")
+    format(self.variables.get('agent_id', None), str(r.status_code))
+    if r.status_code == 200:
+        getDeviceStatusResult = False
+        self.getDeviceStatusJson(r.text)
+        if self.debug is True:
+            self.printDeviceStatus()
+    else:
+        print (" Received an error from server, cannot retrieve results")
+        getDeviceStatusResult = False
+    if getDeviceStatusResult==True:
+        self.set_variable('offline_count', 0)
+    else:
+        self.set_variable('offline_count', self.get_variable('offline_count')+1
 
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_Smartthings_motion ในฟังก์ชั่น getDeviceStatus
 
+.. code-block:: python
 
+    def getDeviceStatusJson(self, data):
+        conve_json = json.loads(data)
+        print conve_json
+        self.set_variable('contact', str(conve_json["contact"]))
+        self.set_variable('type', str(conve_json["type"]))
+        self.set_variable('unitTime', str(conve_json["unitTime"]))
+        self.set_variable('label', str(conve_json["label"]))
+        if self.get_variable('contact') == 'closed':
+             print "close"
+        elif self.get_variable('contact') == 'open':
+             print "open"
+             )
 
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_Smartthings_motion ในฟังก์ชั่น getDeviceStatusJson
 
+1.4.21 classAPI_Smartthings_Netatmo
+-----------------------------------
 
+.. code-block:: python
 
+    def getDeviceStatus(self):
+        try:
+            r = requests.post(
+                url= self.get_variable('url'),
+                headers = {
+                    "Content-Type":self.get_variable('content'),
+                },
+                data = {
+                    "client_id":self.get_variable('client_id'),
+                    "username":self.get_variable('username'),
+                    "password":self.get_variable('password'),
+                    "scope":self.get_variable('scope'),
+                    "client_secret":self.get_variable('client_secret'),
+                    "grant_type":self.get_variable('grant_type'),
+                },
+                verify = False
+            )
+            print "{0} Agent is querying its current status (status:{1}) at {2} please wait ...".format(self.variables.get('agent_id',None),
+                                                                                                       r.status_code,
+                                                                                                       datetime.datetime.now())
+            if r.status_code == 200:  # 200 means successfully
+                self.getAccessTokenJson(r.content)  # convert string data to JSON object
+                # My API (3) (GET https://api.netatmo.net/api/devicelist)
+                try:
+                    r = requests.get(
+                        url="https://api.netatmo.net/api/devicelist",
+                        params = {
+                            "access_token": self.get_variable("access_token"),
+                        },
+                        verify = False
+                    )
+                    self.getDeviceStatusJson(r.content)
+                    self.printDeviceStatus()
+                except requests.exceptions.RequestException as e:
+                    print('HTTP Request failed')
+            else:
+                print " Received an error from server, cannot retrieve results {}".format(r.status_code)
+        except requests.exceptions.RequestException as e:
+            print('HTTP Request failed')
 
+- รูปที่ 1.4.1-1 ส่วนประกอบของ Class_Smartthings_Netatmo ในฟังก์ชั่น getDeviceStatus
 
+.. code-block:: python
 
+  def getAccessTokenJson(self, data):
+        _theJSON = json.loads(data)
+        try:
+            self.set_variable("access_token", _theJSON["access_token"])
+            self.set_variable("refresh_token", _theJSON["access_token"])
+            self.set_variable("scope", _theJSON["scope"][0])
+            self.set_variable("expire_in", _theJSON["expire_in"])
+        except:
+            print "Error! Netatmo @getAccessTokenJson"
 
+- รูปที่ 1.4.1-2 ส่วนประกอบของ Class_Smartthings_Neatmo ในฟังก์ชั่น getAccessTokenJson
 
+.. code-block:: python
 
+def getDeviceStatusJson(self, data):
+        _theJSON = json.loads(data)
+        try:
+            # print data
+            print _theJSON["body"]["devices"][0]["_id"]
+            self.set_variable("noise", _theJSON["body"]["devices"][0]["dashboard_data"]["Noise"])  # dB
+            _temperature = float(_theJSON["body"]["devices"][0]["dashboard_data"]["Temperature"])
+            self.set_variable("temperature", _temperature) # C
+            self.set_variable("humidity", _theJSON["body"]["devices"][0]["dashboard_data"]["Humidity"])  # %
+            _pressure = float(_theJSON["body"]["devices"][0]["dashboard_data"]["Pressure"])*0.02953
+            self.set_variable("pressure", _pressure)  # inHg
+            self.set_variable("co2", _theJSON["body"]["devices"][0]["dashboard_data"]["CO2"])  # ppm
+            self.set_variable("date_max_temp", _theJSON["body"]["devices"][0]["dashboard_data"]["date_max_temp"])
+            self.set_variable("date_min_temp", _theJSON["body"]["devices"][0]["dashboard_data"]["date_min_temp"])
+            _max_temperature = float(_theJSON["body"]["devices"][0]["dashboard_data"]["max_temp"])
+            self.set_variable("max_temp", _max_temperature)  # C
+            _min_temperature = float(_theJSON["body"]["devices"][0]["dashboard_data"]["min_temp"])
+            self.set_variable("min_temp", _min_temperature)  # C
+            _outdoor_temperature = float(_theJSON["body"]["modules"][0]["dashboard_data"]["Temperature"])
+            self.set_variable("outdoor_temperature", _outdoor_temperature)  # C
+            self.set_variable("outdoor_humidity", _theJSON["body"]["modules"][0]["dashboard_data"]["Humidity"])  # %
+            self.set_variable("outdoor_date_max_temp", _theJSON["body"]["modules"][0]["dashboard_data"]["date_max_temp"])
+            self.set_variable("outdoor_date_min_temp", _theJSON["body"]["modules"][0]["dashboard_data"]["date_min_temp"])
+            _outdoor_max_temperature = float(_theJSON["body"]["modules"][0]["dashboard_data"]["max_temp"])
+            self.set_variable("outdoor_max_temp", _outdoor_max_temperature)  # C
+            _outdoor_min_temperature = float(_theJSON["body"]["modules"][0]["dashboard_data"]["min_temp"])
+            self.set_variable("outdoor_min_temp", _outdoor_min_temperature)  # C
+        except:
+            print "Error! Netatmo @getDeviceStatusJson"
 
+- รูปที่ 1.4.1-3 ส่วนประกอบของ Class_Smartthings_Neatmo ในฟังก์ชั่น getDeviceStatusJson
 
+.. code-block:: python
 
+def printDeviceStatus(self):
+        print " Netatmo indoor device"
+        print("     noise = {} dB".format(self.get_variable('noise')))
+        print("     temperature = {} C".format(self.get_variable('temperature')))
+        print("     humidity = {} %".format(self.get_variable('humidity')))
+        print("     pressure = {} inHg".format(self.get_variable('pressure')))
+        print("     co2 = {} ppm".format(self.get_variable('co2')))
+        print("     date_max_temp = {} unix timestamp".format(self.get_variable('date_max_temp')))
+        print("     date_min_temp = {} unix timestamp".format(self.get_variable('date_min_temp')))
+        print("     max_temp = {} C".format(self.get_variable('max_temp')))
+        print("     min_temp = {} C".format(self.get_variable('min_temp')))
+        print " Netatmo outdoor module"
+        print("     outdoor_temperature = {} C".format(self.get_variable('outdoor_temperature')))
+        print("     outdoor_humidity = {} %".format(self.get_variable('outdoor_humidity')))
+        print("     outdoor_date_max_temp = {} unix timestamp".format(self.get_variable('outdoor_date_max_temp')))
+        print("     date_min_temp = {} unix timestamp".format(self.get_variable('outdoor_date_min_temp')))
+        print("     outdoor_max_temp = {} C".format(self.get_variable('outdoor_max_temp')))
+        print("     outdoor_min_temp = {} C".format(self.get_variable('outdoor_min_temp')))
 
+- รูปที่ 1.4.1-4 ส่วนประกอบของ Class_Smartthings_Neatmo ในฟังก์ชั่น printDeviceStatus
 
+1.4.22 classAPI_Smartthings_CreativePower
+-----------------------------------------
 
+.. code-block:: python
 
+def getDeviceStatus(self):
+        device_id = str(self.get_variable("device_id"))
+        url = 'http://cplservice.com/apixmobile.php/cpletrix?filter=device_id,eq,'+device_id+'&order=trans_id,desc&page=1'
+        http = urllib3.PoolManager()
+        r = http.request('GET', url)
+        conve_json = json.loads(r.data)
+        self.set_variable('grid_transid', float(conve_json['cpletrix']['records'][0][0]))
+        self.set_variable('grid_date', str(conve_json['cpletrix']['records'][0][1]))
+        self.set_variable('grid_time', str(conve_json['cpletrix']['records'][0][2]))
+        self.set_variable('grid_uxtime', float(conve_json['cpletrix']['records'][0][3]))
+        self.set_variable('grid_device_id', float(conve_json['cpletrix']['records'][0][4]))
+        self.set_variable('grid_voltage', float(conve_json['cpletrix']['records'][0][5]))
+        self.set_variable('grid_current', float(conve_json['cpletrix']['records'][0][6]))
+        self.set_variable('grid_earth_leak', float(conve_json['cpletrix']['records'][0][7]))
+        self.set_variable('grid_powerfactor', float(conve_json['cpletrix']['records'][0][8]))
+        self.set_variable('grid_activePower', float(conve_json['cpletrix']['records'][0][9]))
+        self.set_variable('grid_reactivePower', float(conve_json['cpletrix']['records'][0][10]))
+        self.set_variable('grid_accumulated_energy', float(conve_json['cpletrix']['records'][0][11]))
+        self.set_variable('grid_kvarh', float(conve_json['cpletrix']['records'][0][12]))
+        self.set_variable('grid_cp_afci_arc_count_show', str(conve_json['cpletrix']['records'][0][13]))
+        self.set_variable('grid_cp_a0_magoutput', str(conve_json['cpletrix']['records'][0][14]))
+        self.set_variable('grid_cp_a0_rmsoutput', str(conve_json['cpletrix']['records'][0][15]))
+        self.set_variable('grid_cp_Irms_rate', str(conve_json['cpletrix']['records'][0][16]))
+        self.set_variable('grid_cp_dc_rate', str(conve_json['cpletrix']['records'][0][17]))
+        self.set_variable('grid_cp_b1_rmsoutput', str(conve_json['cpletrix']['records'][0][18]))
+        self.set_variable('grid_afe_i_a', str(conve_json['cpletrix']['records'][0][19]))
+        self.set_variable('grid_afe_v', str(conve_json['cpletrix']['records'][0][20]))
+        self.set_variable('grid_cp_pfci_t_high', str(conve_json['cpletrix']['records'][0][21]))
+        self.set_variable('grid_cp_operation_status', str(conve_json['cpletrix']['records'][0][22]))
 
+- รูปที่1.4.1-1ส่วนประกอบของClass_Smartthings_CreativePowerในฟังก์ชั่น getDeviceStatus
 
+.. code-block:: python
 
+def printDeviceStatus(self):
+        print ("--------------------------------Creative Power status--------------------------------")
+        print(" TransID(ID) = {}".format(self.get_variable('grid_transid')))
+        print(" Date(D) = {}".format(self.get_variable('grid_date')))
+        print(" Time(T) = {}".format(self.get_variable('grid_time')))
+        print(" UxTime(UT) = {}".format(self.get_variable('grid_uxtime')))
+        print(" DeviceID(DID) = {}".format(self.get_variable('grid_device_id')))
+        print(" Voltage(V) = {}".format(self.get_variable('grid_voltage')))
+        print(" Current(A) = {}".format(self.get_variable('grid_current')))
+        print(" EarthLeak(EL) = {}".format(self.get_variable('grid_earth_leak')))
+        print(" ActivePower(W) = {}".format(self.get_variable('grid_activePower')))
+        print(" ReactivePower(Var) = {}".format(self.get_variable('grid_reactivePower')))
+        print(" Powerfactor = {}".format(self.get_variable('grid_powerfactor')))
+        print(" AccumulatedEnergy(Wh) = {}".format(self.get_variable('grid_accumulated_energy')))
+        print(" Kvarh = {}".format(self.get_variable('grid_kvarh')))
+        print(" Show = {}".format(self.get_variable('grid_cp_afci_arc_count_show')))
+        print(" A0magOut = {}".format(self.get_variable('grid_cp_a0_magoutput')))
+        print(" A0rmsOut = {}".format(self.get_variable('grid_cp_a0_rmsoutput')))
+        print(" IrmsRate = {}".format(self.get_variable('grid_cp_Irms_rate')))
+        print(" DcRate = {}".format(self.get_variable('grid_cp_dc_rate')))
+        print(" B1RmsOut = {}".format(self.get_variable('grid_cp_b1_rmsoutput')))
+        print(" Afeia = {}".format(self.get_variable('grid_afe_i_a')))
+        print(" Afev = {}".format(self.get_variable('grid_afe_v')))
+        print(" PfcHigh = {}".format(self.get_variable('grid_cp_pfci_t_high')))
+        print(" OperationStatus = {}".format(self.get_variable('grid_cp_operation_status')))
+        print("--------------------------------------------------------------------------------------")
 
-
-
-
-
-
-
-
-
-
+- รูปที่1.4.1-2ส่วนประกอบของClass_Smartthings_CreativePowerในฟังก์ชั่น printDeviceStatus

@@ -87,84 +87,176 @@ PEA HiVE Developer Documentation
 .. toctree::
    :hidden:
    :caption: Progress Report
-   :maxdepth: 2
+   :maxdepth: 1
 
    progress-report/index
 
 .. toctree::
    :hidden:
    :caption: PEA HiVE Software Architecture
-   :maxdepth: 2
+   :maxdepth: 1
 
    pea-hive-software-architecture/index
 
 .. toctree::
-    :hidden:
-    :caption: Layer 1:Device Connectivity
-    :maxdepth: 2
+   :hidden:
+   :caption: Layer 1:Device Connectivity
+   :maxdepth: 1
 
-    layer1/classapi-development
-
-.. toctree::
-    :hidden:
-    :caption: Layer 2:OS and Multi-Agent Systems
-    :maxdepth: 2
-
-    Layer2/os-and-multi-agent-system
+   layer1/classapi-development
 
 .. toctree::
-    :hidden:
-    :caption: Layer 3:Database
-    :maxdepth: 2
+   :hidden:
+   :caption: Layer 2:OS and Multi-Agent Systems
+   :maxdepth: 1
 
-    layer3/database
-
-.. toctree::
-    :hidden:
-    :caption: Layer 4:Database
-    :maxdepth: 2
-
-    layer4/cloud_services
+   Layer2/os-and-multi-agent-system
 
 .. toctree::
-    :hidden:
-    :caption: Layer 5:Application Development
-    :maxdepth: 2
+   :hidden:
+   :caption: Layer 3:Database
+   :maxdepth: 2
 
-    layer5/application_development
-
-.. toctree::
-    :hidden:
-    :caption: Layer 6:User Interface (UI) Development
-    :maxdepth: 2
-
-    layer6/user_interface
+   layer3/database
 
 .. toctree::
-      :hidden:
-      :caption: DevOps
-      :maxdepth: 1
+   :hidden:
+   :caption: Layer 4:Database
+   :maxdepth: 2
 
-    devops/devops
-
-.. toctree::
-      :hidden:
-      :caption: DevOps
-      :maxdepth: 1
-
-    quality_assurance/quality_assurance
+   layer4/cloud_services
 
 .. toctree::
-    :hidden:
-    :caption: What's New
-    :maxdepth: 2
+   :hidden:
+   :caption: Layer 5:Application Development
+   :maxdepth: 2
 
-    latest-updates
+   layer5/application_development
 
 .. toctree::
-    :hidden:
-    :caption: Getting Started
-    :maxdepth: 2
+   :hidden:
+   :caption: Layer 6:User Interface (UI) Development
+   :maxdepth: 2
+
+  layer6/user_interface
+
+
+.. toctree::
+   :hidden:
+   :caption: DevOps
+   :maxdepth: 2
+
+   devops/devops
+
+.. toctree::
+   :hidden:
+   :caption: Quality Assurance
+   :maxdepth: 2
+
+   quality_assurance/quality_assurance
+
+.. toctree::
+   :hidden:
+   :caption: PEA HiVE Compatibility Sticker
+   :maxdepth: 2
+
+   compatibility_sticker/compatibility_sticker
+
+.. toctree::
+   :hidden:
+   :caption: Product Manager (PM)
+   :maxdepth: 2
+
+   product_manager/product_manager
+
+.. toctree::
+   :hidden:
+   :caption: Marketing Campaign (MKT)
+   :maxdepth: 2
+
+   marketing_campaign/marketing_com
+
+.. toctree::
+   :hidden:
+   :caption: Outsite Visits
+   :maxdepth: 2
+
+   outsite_visits/outsite_visits
+
+.. toctree::
+   :hidden:
+   :caption: Smart Home Demo Setup
+   :maxdepth: 2
+
+   smart_home_demo_setup/smart_home_demo_setup
+
+.. toctree::
+   :hidden:
+   :caption: Meetings
+   :maxdepth: 2
+
+   meetings/meetings
+
+.. toctree::
+   :hidden:
+   :caption: Events
+   :maxdepth: 2
+
+   events/events
+
+.. toctree::
+   :hidden:
+   :caption: Conferences
+   :maxdepth: 2
+
+   conferences/conferences
+
+.. toctree::
+   :hidden:
+   :caption: Guest Visitors
+   :maxdepth: 2
+
+   guest_visitors/guest_visitors
+
+.. toctree::
+   :hidden:
+   :caption: PEA HiVE Training
+   :maxdepth: 2
+
+   pea_hive_training/pea_hive_training
+
+.. toctree::
+   :hidden:
+   :caption: Advertisement
+   :maxdepth: 2
+
+   advertisement/advertisement
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :caption: Case study
+
+   case-study/case
+
+.. toctree::
+   :hidden:
+   :caption: Smart Home Device
+   :maxdepth: 2
+
+   smarthome-devices/devices
+
+.. toctree::
+   :hidden:
+   :caption: What's New
+   :maxdepth: 2
+
+   latest-updates
+
+.. toctree::
+   :hidden:
+   :caption: Getting Started
+   :maxdepth: 2
 
     getting-started/overview
     getting-started/up-and-running
@@ -191,12 +283,12 @@ PEA HiVE Developer Documentation
    code-review-guidelines
 
 .. toctree::
-    :hidden:
-    :maxdepth: 2
-    :caption: Reference
+   :hidden:
+   :maxdepth: 2
+   :caption: Reference
 
-    capabilities-reference
-    ref-docs/reference
+   capabilities-reference
+   ref-docs/reference
 
 .. toctree::
    :hidden:
