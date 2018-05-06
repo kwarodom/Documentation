@@ -115,28 +115,28 @@ PEA HiVE Developer Documentation
 .. toctree::
    :hidden:
    :caption: Layer 3:Database
-   :maxdepth: 2
+   :maxdepth: 1
 
    layer3/database
 
 .. toctree::
    :hidden:
    :caption: Layer 4:Database
-   :maxdepth: 2
+   :maxdepth: 1
 
    layer4/cloud_services
 
 .. toctree::
    :hidden:
    :caption: Layer 5:Application Development
-   :maxdepth: 2
+   :maxdepth: 1
 
    layer5/application_development
 
 .. toctree::
    :hidden:
    :caption: Layer 6:User Interface (UI) Development
-   :maxdepth: 2
+   :maxdepth: 1
 
   layer6/user_interface
 
@@ -144,97 +144,97 @@ PEA HiVE Developer Documentation
 .. toctree::
    :hidden:
    :caption: DevOps
-   :maxdepth: 2
+   :maxdepth: 1
 
    devops/devops
 
 .. toctree::
    :hidden:
    :caption: Quality Assurance
-   :maxdepth: 2
+   :maxdepth: 1
 
    quality_assurance/quality_assurance
 
 .. toctree::
    :hidden:
    :caption: PEA HiVE Compatibility Sticker
-   :maxdepth: 2
+   :maxdepth: 1
 
    compatibility_sticker/compatibility_sticker
 
 .. toctree::
    :hidden:
    :caption: Product Manager (PM)
-   :maxdepth: 2
+   :maxdepth: 1
 
    product_manager/product_manager
 
 .. toctree::
    :hidden:
    :caption: Marketing Campaign (MKT)
-   :maxdepth: 2
+   :maxdepth: 1
 
    marketing_campaign/marketing_com
 
 .. toctree::
    :hidden:
    :caption: Outsite Visits
-   :maxdepth: 2
+   :maxdepth: 1
 
    outsite_visits/outsite_visits
 
 .. toctree::
    :hidden:
    :caption: Smart Home Demo Setup
-   :maxdepth: 2
+   :maxdepth: 1
 
    smart_home_demo_setup/smart_home_demo_setup
 
 .. toctree::
    :hidden:
    :caption: Meetings
-   :maxdepth: 2
+   :maxdepth: 1
 
    meetings/meetings
 
 .. toctree::
    :hidden:
    :caption: Events
-   :maxdepth: 2
+   :maxdepth: 1
 
    events/events
 
 .. toctree::
    :hidden:
    :caption: Conferences
-   :maxdepth: 2
+   :maxdepth: 1
 
    conferences/conferences
 
 .. toctree::
    :hidden:
    :caption: Guest Visitors
-   :maxdepth: 2
+   :maxdepth: 1
 
    guest_visitors/guest_visitors
 
 .. toctree::
    :hidden:
    :caption: PEA HiVE Training
-   :maxdepth: 2
+   :maxdepth: 1
 
    pea_hive_training/pea_hive_training
 
 .. toctree::
    :hidden:
    :caption: Advertisement
-   :maxdepth: 2
+   :maxdepth: 1
 
    advertisement/advertisement
 
 .. toctree::
    :hidden:
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Case study
 
    case-study/case
@@ -242,28 +242,28 @@ PEA HiVE Developer Documentation
 .. toctree::
    :hidden:
    :caption: Smart Home Device
-   :maxdepth: 2
+   :maxdepth: 1
 
    smarthome-devices/devices
 
 .. toctree::
    :hidden:
    :caption: What's New
-   :maxdepth: 2
+   :maxdepth: 1
 
    latest-updates
 
 .. toctree::
    :hidden:
    :caption: Getting Started
-   :maxdepth: 2
+   :maxdepth: 1
 
-    getting-started/overview
-    getting-started/up-and-running
-    getting-started/groovy-basics
-    getting-started/groovy-for-PEA HiVE
     getting-started/first-smartapp
     getting-started/getting-help
+    getting-started/groovy-basics
+    getting-started/groovy-for-smartthings
+    getting-started/overview
+    getting-started/up-and-running
 
 .. toctree::
    :hidden:
@@ -284,7 +284,7 @@ PEA HiVE Developer Documentation
 
 .. toctree::
    :hidden:
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Reference
 
    capabilities-reference
@@ -292,8 +292,88 @@ PEA HiVE Developer Documentation
 
 .. toctree::
    :hidden:
-   :maxdepth: 2
+   :maxdepth: 1
+   :caption: FAQ
+
+   faq/index
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
    :caption: Misc
 
    contributing/index
    sept-2015-faq
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: Create Alexa Skill By AWS Lambda (Part1)
+
+   alexa-by-awslambda1/index
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: Create Alexa Skill By AWS Lambda (Part2)
+
+   alexa-by-awslambda2/index
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: How to sync firebase realtime data base to website
+
+   firebase-to-website/index
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: Python write/read firebase
+
+   python-write-read-firebase/index
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: (Firebase) Read and Write Data on the We
+
+   firebase-read-write-onweb/index
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: Azure IoT with Python
+
+   python-azure-iot/index
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: Publish Home Connext into App Store
+
+   home-connext-appstore/index
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: Getting Started with Azure IoT Hub
+
+   gs-azure-iot-hub/getting-started
+
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: Microsoft Azure AI — Machine Learning Resources
+
+   azure-ai-machine-learning/azure-ai
+
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: Getting Started with React Native
+
+   gs-native/getting-started
+
+   

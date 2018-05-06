@@ -1,8 +1,6 @@
 .. _user_interface:
 
 Layer 6: User Interface (UI) Development
-
-Layer 6: User Interface (UI) Development
 ======================================
 
 6.1 Getting started with React Native Tutorial :

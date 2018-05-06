@@ -1,3 +1,5 @@
+.. _case:
+
 Case Studies
 ============
 
